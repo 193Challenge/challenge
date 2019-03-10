@@ -13,7 +13,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         btnRegister.setOnClickListener(this)
-        btnEnter.setOnClickListener(this)
+        btnLogin.setOnClickListener(this)
     }
 
 
@@ -23,7 +23,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                 val intentRegister = Intent(this, RegisterActivity::class.java)
                 startActivity(intentRegister)
             }
-            btnEnter.id -> {
+            btnLogin.id -> {
                 val intentLogin = Intent(this, LoginActivity::class.java)
                 startActivity(intentLogin)
             }
