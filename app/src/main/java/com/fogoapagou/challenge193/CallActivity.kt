@@ -18,7 +18,7 @@ class CallActivity : AppCompatActivity(), OnMapReadyCallback, View.OnClickListen
     override fun onClick(btn: View?) {
         when (btn?.id) {
             btnAccept.id -> {
-                val gmmIntentUri = Uri.parse("google.navigation:q=Av Paulista, 111")
+                val gmmIntentUri = Uri.parse("google.navigation:q=Av Paulista, 1439")
                 val mapIntent = Intent(Intent.ACTION_VIEW, gmmIntentUri)
                 mapIntent.setPackage("com.google.android.apps.maps")
                 startActivity(mapIntent)
@@ -54,10 +54,15 @@ class CallActivity : AppCompatActivity(), OnMapReadyCallback, View.OnClickListen
      */
     override fun onMapReady(googleMap: GoogleMap) {
         mMap = googleMap
-
         // Add a marker in Sydney and move the camera
-        val sydney = LatLng(-34.0, 151.0)
-        mMap.addMarker(MarkerOptions().position(sydney).title("Marker in Sydney"))
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney))
+        val pos = LatLng(-23.5626136,-46.6553373)
+        mMap.addMarker(MarkerOptions().position(pos).title("Av Paulista, 111"))
+        mMap.animateCamera(
+            CameraUpdateFactory.newLatLngZoom(
+                pos,
+                18.0f
+            )
+        )
+
     }
 }
