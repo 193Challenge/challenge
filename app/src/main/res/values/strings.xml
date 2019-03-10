@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Challenge193</string>
+    <string-array name="professions">
+        <item>Médico(a)</item>
+        <item>Enfermeiro(a)</item>
+        <item>Socorrista</item>
+        <item>Borracheiro</item>
+        <item>Outros...</item>
+    </string-array>
+    <string name="title_activity_call">Map</string>
+</resources>
