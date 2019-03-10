@@ -91,5 +91,9 @@
             android:layout_below="@+id/tx"
 
     />
+    <Button
+            android:text="Chamado"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:id="@+id/btnSimulation"/>
 
 </RelativeLayout>

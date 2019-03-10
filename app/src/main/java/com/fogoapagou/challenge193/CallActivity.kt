@@ -1,16 +1,33 @@
 package com.fogoapagou.challenge193
 
-import android.support.v7.app.AppCompatActivity
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
-
+import android.support.v7.app.AppCompatActivity
+import android.view.View
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
+import kotlinx.android.synthetic.main.activity_call.*
 
-class CallActivity : AppCompatActivity(), OnMapReadyCallback {
+
+class CallActivity : AppCompatActivity(), OnMapReadyCallback, View.OnClickListener {
+    override fun onClick(btn: View?) {
+        when (btn?.id) {
+            btnAccept.id -> {
+                val gmmIntentUri = Uri.parse("google.navigation:q=Av Paulista, 111")
+                val mapIntent = Intent(Intent.ACTION_VIEW, gmmIntentUri)
+                mapIntent.setPackage("com.google.android.apps.maps")
+                startActivity(mapIntent)
+            }
+            btnReject.id -> {
+                onBackPressed()
+            }
+        }
+    }
 
     private lateinit var mMap: GoogleMap
 
@@ -21,6 +38,9 @@ class CallActivity : AppCompatActivity(), OnMapReadyCallback {
         val mapFragment = supportFragmentManager
             .findFragmentById(R.id.map) as SupportMapFragment
         mapFragment.getMapAsync(this)
+
+        btnAccept.setOnClickListener(this)
+        btnReject.setOnClickListener(this)
     }
 
     /**
